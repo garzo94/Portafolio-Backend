@@ -176,10 +176,11 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 AWS_ACCESS_KEY_ID = 'AKIAT2DPK7XMU75V6I3S'
 AWS_SECRET_ACCESS_KEY =  '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'
-AWS_STORAGE_BUCKET_NAME = 'myportfolio-garzo94'
+AWS_STORAGE_BUCKET_NAME = 'myporfolio-garzo94'
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
