@@ -7,6 +7,8 @@ TYPE_CHOICES = [
     ('web','Web development'),
     ('mobile','Mobile development'),
     ('ml','Machine Learning'),
+    ('ta','Task Automatization'),
+
 
 ]
 

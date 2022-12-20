@@ -24,6 +24,12 @@ SECRET_KEY = 'django-insecure-#uderu+je3ti((uecwpf_f6u-+9_3jhfyudnu9d(lv^$%(=9oe
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+EMAIL_HOST =  "smtp.gmail.com"
+EMAIL_HOST_USER = "alexgarzo25@gmail.com"
+EMAIL_HOST_PASSWORD = "icojpmmteckuhhcm"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 ALLOWED_HOSTS = []
 
@@ -31,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "channels",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,11 +60,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK ={
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 3
 }
 
 ROOT_URLCONF = 'portafolio.urls'
@@ -65,7 +75,7 @@ ROOT_URLCONF = 'portafolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR /'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,6 +88,14 @@ TEMPLATES = [
     },
 ]
 
+# ASGI_APPLICATION = "portafolio.routing.application" #routing.py will be created later
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': "channels.layers.InMemoryChannelLayer"
+#         }
+#     }
+
+
 WSGI_APPLICATION = 'portafolio.wsgi.application'
 
 
@@ -85,11 +103,21 @@ WSGI_APPLICATION = 'portafolio.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
+    "default":{
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'U5WXiACshkH4btrvhoo0',
+        'HOST': 'containers-us-west-125.railway.app',
+        'PORT': '6568',
     }
+
 }
+
 
 
 # Password validation
@@ -126,7 +154,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
