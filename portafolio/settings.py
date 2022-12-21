@@ -33,7 +33,7 @@ EMAIL_PORT = config('EMAIL_PORT',cast=int)
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-ALLOWED_HOSTS = [f'{config("ALLOWED_HOSTS")}']
+ALLOWED_HOSTS =[f'{config("ALLOWED_HOSTS")}']
 
 
 # Application definition
