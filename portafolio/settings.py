@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,15 +25,15 @@ SECRET_KEY = 'django-insecure-#uderu+je3ti((uecwpf_f6u-+9_3jhfyudnu9d(lv^$%(=9oe
 CSRF_TRUSTED_ORIGINS = ['https://portafolio-backend-production-58b1.up.railway.app']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 EMAIL_HOST =  "smtp.gmail.com"
-EMAIL_HOST_USER = "alexgarzo25@gmail.com"
-EMAIL_HOST_PASSWORD = "icojpmmteckuhhcm"
-EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT',cast=int)
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [f'{config("ALLOWED_HOSTS")}']
 
 
 # Application definition
@@ -66,7 +67,7 @@ MIDDLEWARE = [
 
 
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = config('CORS_ORIGIN_ALLOW_ALL', cast=bool)
 
 REST_FRAMEWORK ={
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -91,13 +92,6 @@ TEMPLATES = [
     },
 ]
 
-# ASGI_APPLICATION = "portafolio.routing.application" #routing.py will be created later
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': "channels.layers.InMemoryChannelLayer"
-#         }
-#     }
-
 
 WSGI_APPLICATION = 'portafolio.wsgi.application'
 
@@ -112,11 +106,11 @@ DATABASES = {
     # },
     "default":{
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'U5WXiACshkH4btrvhoo0',
-        'HOST': 'containers-us-west-125.railway.app',
-        'PORT': '6568',
+        'NAME': config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'),
+        'PORT': config('PORT', cast=int),
     }
 
 }
@@ -174,9 +168,9 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 
 
-AWS_ACCESS_KEY_ID = 'AKIAT2DPK7XMU75V6I3S'
-AWS_SECRET_ACCESS_KEY =  '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'
-AWS_STORAGE_BUCKET_NAME = 'myporfolio-garzo94'
+AWS_ACCESS_KEY_ID =  config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY =  config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 
