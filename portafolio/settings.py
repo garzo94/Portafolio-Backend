@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-#uderu+je3ti((uecwpf_f6u-+9_3jhfyudnu9d(lv^$%(=9oe'
-CSRF_TRUSTED_ORIGINS = ['https://portafolio-backend-production-58b1.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://portafolio-backend-production-58b1.up.railway.app/']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
