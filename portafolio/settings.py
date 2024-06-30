@@ -67,7 +67,7 @@ MIDDLEWARE = [
 
 
 
-CORS_ORIGIN_ALLOW_ALL = config('CORS_ORIGIN_ALLOW_ALL', cast=bool)
+CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK ={
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
